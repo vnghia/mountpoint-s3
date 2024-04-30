@@ -1116,7 +1116,7 @@ impl RequestMetrics {
 
     /// Get the ID of the thread the request was made from
     pub fn thread_id(&self) -> Option<ThreadId> {
-        let mut out: aws_thread_id_t = 0;
+        let mut out: aws_thread_id_t = 0 as _;
         // SAFETY: `inner` is a valid aws_s3_request_metrics
         unsafe {
             aws_s3_request_metrics_get_thread_id(self.inner.as_ptr(), &mut out)
